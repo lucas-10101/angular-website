@@ -19,15 +19,15 @@ const checkRequiredCustomProperties = (routes: Routes): Routes => {
     routes.forEach((route) => {
 
         let isPublicProperty: boolean | undefined = route.data?.['isPublic'];
-        let roleProperty: string | undefined = route.data?.['role'];
+        let scopeProperty: string | undefined = route.data?.['scope'];
 
         let declaredGuards: any[] | undefined = route.canActivate;
         let redirectTo: string | undefined = route.redirectTo;
 
-        if (isPublicProperty === undefined || roleProperty === undefined) {
-            throw new Error(`Must declare isPublic and role properties on field data inside route definition, route path is: ${route.path}`);
-        } else if (isPublicProperty == false && roleProperty == '') {
-            throw new Error(`The role must be informed if route is not public, route path is: ${route.path}`);
+        if (isPublicProperty === undefined || scopeProperty === undefined) {
+            throw new Error(`Must declare isPublic and scope properties on field data inside route definition, route path is: ${route.path}`);
+        } else if (isPublicProperty == false && scopeProperty == '') {
+            throw new Error(`The scope must be informed if route is not public, route path is: ${route.path}`);
         }
 
         if ((declaredGuards === undefined || declaredGuards.length === 0) && redirectTo == undefined) {

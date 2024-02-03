@@ -1,6 +1,6 @@
 import { Routes } from "@angular/router";
 import { HomeComponent } from "../../../pages/home/home.component";
-import { pageGuard } from "../../../guards/page.guard";
+import { PageGuard } from "../../../guards/page.guard";
 import { LoginComponent } from "../../../pages/login/login.component";
 
 const DEFAULT_PAGES: Routes = [
@@ -9,7 +9,7 @@ const DEFAULT_PAGES: Routes = [
         pathMatch: 'full',
         redirectTo: 'home',
         data: {
-            role: 'PAGE_LOGIN',
+            scope: 'PAGE_HOME',
             isPublic: true
         }
     },
@@ -17,18 +17,19 @@ const DEFAULT_PAGES: Routes = [
         path: 'home',
         pathMatch: 'full',
         component: HomeComponent,
-        canActivate: [pageGuard],
+        canActivate: [PageGuard],
         data: {
-            role: 'PAGE_HOME'
+            scope: 'PAGE_HOME',
+            isPublic: false
         }
     },
     {
         path: 'login',
         pathMatch: 'full',
         component: LoginComponent,
-        canActivate: [pageGuard],
+        canActivate: [PageGuard],
         data: {
-            role: 'PAGE_LOGIN',
+            scope: 'PAGE_LOGIN',
             isPublic: true
         }
     }

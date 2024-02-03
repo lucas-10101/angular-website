@@ -5,7 +5,13 @@ const ANONYMOUS_USER: User = {
     tenant: "null",
     name: "Anonymous user",
     enabled: true,
-    roles: []
+    permissions: []
+}
+
+interface Permission {
+    description: string;
+    scope: string;
+    roles: Array<string>;
 }
 
 interface User {
@@ -13,7 +19,7 @@ interface User {
     tenant: string;
     name: string;
     enabled: boolean;
-    roles: Array<string>;
+    permissions: Permission[];
 }
 
 export { ANONYMOUS_USER, User };
