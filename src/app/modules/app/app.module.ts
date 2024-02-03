@@ -1,23 +1,25 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from '../../components/home/home.component';
-import { RouteModule } from '../route/route.module';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { RootComponent } from '../../root.component';
 import { MaterialModule } from '../material/material.module';
+import { RoutesModule } from '../route/RouteModule';
+import { PagesModule } from '../pages/pages.module';
 
 @NgModule({
   declarations: [
-    HomeComponent
+    RootComponent
   ],
   imports: [
     CommonModule,
     BrowserModule,
-    RouteModule,
-    MaterialModule
+    RoutesModule,
+    MaterialModule,
+    PagesModule
   ],
   bootstrap: [
-    HomeComponent
+    RootComponent
   ],
   providers: [
     provideAnimationsAsync()
